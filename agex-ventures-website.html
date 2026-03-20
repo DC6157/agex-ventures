@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agex Ventures — Building India's Future</title>
+  <style>
+    /* ── RESET & ROOT ─────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --navy: #0A1628;
+      --deep: #0D1F3C;
+      --steel: #1B3A6B;
+      --gold: #C8973A;
+      --gold-light: #E8B84B;
+      --offwhite: #F5F0E8;
+      --warm-gray: #D4CAB8;
+      --muted: #8A8070;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--navy);
+      color: var(--warm-gray);
+      overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAVBAR ───────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(10, 22, 40, 0.97);
+      border-bottom: 2px solid rgba(200, 151, 58, 0.3);
+    }
+
+    .logo {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: #F5F0E8;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--warm-gray);
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 130px 60px 100px;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200, 151, 58, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 151, 58, 0.06) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .hero-diagonal {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 45%;
+      background: linear-gradient(135deg, rgba(27, 58, 107, 0.45) 0%, rgba(13, 31, 60, 0.7) 100%);
+      clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200, 151, 58, 0.45);
+      padding: 7px 16px;
+      margin-bottom: 30px;
+    }
+
+    .hero-title {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: clamp(52px, 9vw, 100px);
+      font-weight: 900;
+      line-height: 0.93;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      color: #F5F0E8;
+      margin-bottom: 26px;
+    }
+
+    .hero-title .outline-text {
+      -webkit-text-stroke: 2px var(--gold);
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-style: italic;
+      font-size: clamp(16px, 2.2vw, 21px);
+      color: var(--gold-light);
+      margin-bottom: 44px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 34px;
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: transparent;
+      color: var(--gold);
+      padding: 14px 34px;
+      border: 2px solid rgba(200, 151, 58, 0.5);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(200, 151, 58, 0.07);
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 56px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      gap: 52px;
+      flex-wrap: wrap;
+      z-index: 2;
+    }
+
+    .stat {
+      border-left: 3px solid var(--gold);
+      padding-left: 16px;
+    }
+
+    .stat-num {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: #F5F0E8;
+      line-height: 1;
+    }
+
+    .stat-num em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .stat-lbl {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── SHARED SECTION ───────────────────────────────────── */
+    section {
+      padding: 96px 60px;
+    }
+
+    .eyebrow {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .sec-title {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #F5F0E8;
+      margin-bottom: 20px;
+    }
+
+    .gold-rule {
+      width: 60px;
+      height: 4px;
+      background: var(--gold);
+      margin-bottom: 30px;
+    }
+
+    .sec-body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--warm-gray);
+      max-width: 620px;
+    }
+
+    /* ── OVERVIEW ─────────────────────────────────────────── */
+    #overview {
+      background: var(--deep);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .callout-quote {
+      background: var(--steel);
+      border-left: 5px solid var(--gold);
+      padding: 28px 32px;
+      margin-top: 32px;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.65;
+      color: #F5F0E8;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 48px;
+    }
+
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(200, 151, 58, 0.14);
+      padding: 22px 26px;
+      transition: border-color 0.25s;
+    }
+
+    .info-card:hover {
+      border-color: rgba(200, 151, 58, 0.4);
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      background: rgba(200, 151, 58, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .info-card-text h4 {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .info-card-text p {
+      font-size: 14px;
+      color: var(--warm-gray);
+    }
+
+    /* ── VISION & MISSION ─────────────────────────────────── */
+    #vision {
+      background: var(--navy);
+      border-top: 1px solid rgba(200, 151, 58, 0.1);
+      border-bottom: 1px solid rgba(200, 151, 58, 0.1);
+    }
+
+    .vm-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px;
+    }
+
+    .vm-header .gold-rule {
+      margin: 0 auto 0;
+    }
+
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .vm-card {
+      padding: 52px 44px;
+    }
+
+    .vm-card.vision-card {
+      background: var(--steel);
+    }
+
+    .vm-card.mission-card {
+      background: rgba(200, 151, 58, 0.07);
+      border: 1px solid rgba(200, 151, 58, 0.2);
+    }
+
+    .vm-card h3 {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .vm-card p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--warm-gray);
+      margin-top: 14px;
+    }
+
+    /* ── SERVICES ─────────────────────────────────────────── */
+    #services {
+      background: var(--deep);
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 0;
+      margin-top: 16px;
+      margin-bottom: 44px;
+      border-bottom: 2px solid rgba(200, 151, 58, 0.15);
+    }
+
+    .tab-btn {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      padding: 13px 32px;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--warm-gray);
+    }
+
+    .tab-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .svc-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(200, 151, 58, 0.1);
+      padding: 36px 32px;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .svc-card:hover {
+      border-color: rgba(200, 151, 58, 0.4);
+      background: rgba(200, 151, 58, 0.04);
+    }
+
+    .svc-num {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      color: rgba(200, 151, 58, 0.14);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .svc-card h4 {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #F5F0E8;
+      margin-bottom: 12px;
+    }
+
+    .svc-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .svc-full {
+      grid-column: span 2;
+    }
+
+    /* ── EXPERIENCE ───────────────────────────────────────── */
+    #experience {
+      background: var(--navy);
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .milestones {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .milestone {
+      display: flex;
+      gap: 22px;
+      padding-bottom: 36px;
+      position: relative;
+    }
+
+    .milestone:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 13px;
+      top: 30px;
+      bottom: 0;
+      width: 1px;
+      background: rgba(200, 151, 58, 0.2);
+    }
+
+    .milestone-dot {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 2px;
+    }
+
+    .milestone h4 {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #F5F0E8;
+      margin-bottom: 6px;
+    }
+
+    .milestone p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      padding-top: 36px;
+    }
+
+    .metric-box {
+      background: var(--deep);
+      border: 1px solid rgba(200, 151, 58, 0.12);
+      padding: 38px 28px;
+      text-align: center;
+    }
+
+    .metric-box:first-child {
+      background: var(--steel);
+    }
+
+    .metric-big {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .metric-unit {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .metric-lbl {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .metric-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 7px;
+      line-height: 1.5;
+    }
+
+    /* ── WHY CHOOSE US ────────────────────────────────────── */
+    #why {
+      background: var(--deep);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 56px;
+    }
+
+    .why-card {
+      padding: 44px 32px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(200, 151, 58, 0.1);
+      position: relative;
+      transition: transform 0.3s;
+      overflow: hidden;
+    }
+
+    .why-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .why-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .why-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .why-icon {
+      font-size: 34px;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .why-card h4 {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #F5F0E8;
+      margin-bottom: 12px;
+    }
+
+    .why-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── SECTORS STRIP ────────────────────────────────────── */
+    #sectors {
+      background: var(--gold);
+      padding: 52px 60px;
+    }
+
+    .sectors-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .sectors-title {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .sectors-pills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      border: 2px solid rgba(10, 22, 40, 0.3);
+      padding: 7px 16px;
+    }
+
+    /* ── GOALS ────────────────────────────────────────────── */
+    #goals {
+      background: var(--navy);
+    }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      margin-top: 56px;
+      align-items: start;
+    }
+
+    .goals-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .goal-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 22px 26px;
+      border-left: 3px solid rgba(200, 151, 58, 0.3);
+      background: rgba(255, 255, 255, 0.02);
+      transition: border-color 0.2s;
+    }
+
+    .goal-item:hover {
+      border-left-color: var(--gold);
+    }
+
+    .goal-arrow {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--gold);
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+
+    .goal-item h4 {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #F5F0E8;
+      margin-bottom: 6px;
+    }
+
+    .goal-item p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .vision-box {
+      background: var(--steel);
+      padding: 52px 44px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .vision-box blockquote {
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.75;
+      color: #F5F0E8;
+      margin-bottom: 28px;
+    }
+
+    .vision-box cite {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .milestones-table {
+      margin-top: 36px;
+    }
+
+    .mrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(200, 151, 58, 0.15);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    .mrow:last-child {
+      border-bottom: none;
+    }
+
+    .mrow span:first-child {
+      color: var(--warm-gray);
+    }
+
+    .mrow span:last-child {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────────── */
+    #contact {
+      background: var(--deep);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      margin-top: 56px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .c-icon {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      background: rgba(200, 151, 58, 0.1);
+      border: 1px solid rgba(200, 151, 58, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .contact-item h4 {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .contact-item p {
+      font-size: 15px;
+      color: #F5F0E8;
+      line-height: 1.5;
+    }
+
+    .hours-box {
+      padding: 26px 28px;
+      background: rgba(200, 151, 58, 0.06);
+      border: 1px solid rgba(200, 151, 58, 0.18);
+    }
+
+    .hours-box .lbl {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .hours-box p {
+      font-size: 14px;
+      color: var(--warm-gray);
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(200, 151, 58, 0.15);
+      padding: 44px;
+    }
+
+    .contact-form h3 {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #F5F0E8;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(200, 151, 58, 0.2);
+      color: #F5F0E8;
+      padding: 11px 14px;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      height: 96px;
+      resize: vertical;
+    }
+
+    .form-group select option {
+      background: var(--deep);
+      color: #F5F0E8;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+
+    .submit-btn:hover {
+      background: var(--gold-light);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: #050D1A;
+      padding: 36px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 2px solid rgba(200, 151, 58, 0.2);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #F5F0E8;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-sectors {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .footer-sectors b {
+      color: var(--gold);
+    }
+
+    /* ── SCROLL ANIMATION ─────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 920px) {
+      #navbar {
+        padding: 14px 24px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 22, 40, 0.98);
+        padding: 20px 24px;
+        gap: 16px;
+        z-index: 998;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      #hero {
+        padding: 100px 24px 100px;
+      }
+
+      .hero-stats {
+        left: 24px;
+        right: 24px;
+        gap: 24px;
+      }
+
+      section {
+        padding: 64px 24px;
+      }
+
+      .overview-grid,
+      .vm-grid,
+      .exp-grid,
+      .goals-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .tab-panel.active {
+        grid-template-columns: 1fr;
+      }
+
+      .svc-full {
+        grid-column: span 1;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #sectors {
+        padding: 40px 24px;
+      }
+
+      footer {
+        padding: 28px 24px;
+      }
+
+      .info-cards {
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .hero-title {
+        font-size: 46px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <!-- <a href="#hero" class="logo">AGEX<span>.</span>VENTURES</a> -->
+
+    <a href="#hero" class="logo" style="display:flex; align-items:center; gap:10px;">
+      <img src="logo.png" alt="Agex Ventures" style="
+  height:42px;
+  background: linear-gradient(135deg, #ffffff, #f5f0e8);
+  padding:6px 14px;
+  border-radius:8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+      <span>AGEX<span style="color:#C8973A;">.</span>VENTURES</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#overview">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <img src="logo.png" alt="logo" style="
+  position:absolute;
+  right:60px;
+  top:120px;
+  height:140px;
+  opacity:0.08;
+  filter: brightness(2) contrast(1.2);">
+
+  <section id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-diagonal"></div>
+    <div class="hero-content">
+      <span class="hero-badge">Civil Construction &amp; Oil &amp; Gas Services &mdash; Jaipur, India</span>
+      <h1 class="hero-title">
+        Building<br>
+        <span class="outline-text">India's</span><br>
+        Future.
+      </h1>
+      <p class="hero-tagline">&ldquo;Where Engineering Precision Meets Unstoppable Ambition.&rdquo;</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-gold">Explore Services</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">2<em>+</em></div>
+        <div class="stat-lbl">Core Industries</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10<em>+</em></div>
+        <div class="stat-lbl">Service Verticals</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Pan<em>-</em>India</div>
+        <div class="stat-lbl">Project Reach</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&#8377;<em>Cr</em></div>
+        <div class="stat-lbl">Scale Ambition</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="overview-grid">
+      <div>
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="sec-title">Company<br>Overview</h2>
+        <div class="gold-rule"></div>
+        <p class="sec-body">Agex Ventures is a diversified infrastructure and industrial services enterprise
+          headquartered in Jaipur, Rajasthan. We deliver high-performance solutions across two critical pillars of
+          India&rsquo;s growth: <strong style="color:#F5F0E8;">Civil Construction</strong> and <strong
+            style="color:#F5F0E8;">Oil &amp; Gas Services</strong>.</p>
+        <p class="sec-body" style="margin-top:16px;">From landmark residential and commercial developments to complex
+          industrial pipelines and oilfield support operations, Agex Ventures brings the technical depth, financial
+          discipline, and operational agility demanded by large-scale projects across India.</p>
+        <p class="sec-body" style="margin-top:16px;">We operate as a partner of choice for public sector undertakings,
+          EPC contractors, private developers, and oil &amp; gas majors&mdash;delivering projects on schedule, within
+          budget, and to the highest quality benchmarks.</p>
+        <div class="callout-quote">&ldquo;Every structure we raise and every pipeline we lay is a testament to
+          India&rsquo;s engineering capability&mdash;built to outlast generations.&rdquo;</div>
+      </div>
+      <div class="info-cards">
+        <div class="info-card fade-up">
+          <div class="info-icon">&#127970;</div>
+          <div class="info-card-text">
+            <h4>Company Name</h4>
+            <p>Agex Ventures</p>
+          </div>
+        </div>
+        <div class="info-card fade-up">
+          <div class="info-icon">&#128205;</div>
+          <div class="info-card-text">
+            <h4>Registered Office</h4>
+            <p>Jaipur, Rajasthan, India</p>
+          </div>
+        </div>
+        <div class="info-card fade-up">
+          <div class="info-icon">&#9881;</div>
+          <div class="info-card-text">
+            <h4>Business Verticals</h4>
+            <p>Civil Construction &middot; Oil &amp; Gas Services</p>
+          </div>
+        </div>
+        <div class="info-card fade-up">
+          <div class="info-icon">&#127758;</div>
+          <div class="info-card-text">
+            <h4>Project Footprint</h4>
+            <p>Rajasthan &amp; Pan-India Operations</p>
+          </div>
+        </div>
+        <div class="info-card fade-up">
+          <div class="info-icon">&#128222;</div>
+          <div class="info-card-text">
+            <h4>Contact</h4>
+            <p>+91 91169 06355</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION -->
+  <section id="vision">
+    <div class="vm-header">
+      <span class="eyebrow">Our Purpose</span>
+      <h2 class="sec-title">Vision &amp; Mission</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card vision-card fade-up">
+        <h3>&#128301; Our Vision</h3>
+        <p>To be one of India&rsquo;s most trusted and formidable multi-sector infrastructure
+          enterprises&mdash;recognized for engineering excellence, uncompromising safety standards, and the ability to
+          execute complex large-scale projects that drive national development.</p>
+        <p>We envision Agex Ventures standing alongside the country&rsquo;s leading EPC contractors and industrial
+          service providers, contributing meaningfully to India&rsquo;s infrastructure backbone across civil, energy,
+          and industrial domains.</p>
+      </div>
+      <div class="vm-card mission-card fade-up">
+        <h3>&#127919; Our Mission</h3>
+        <p>To deliver superior civil construction and oil &amp; gas services through disciplined project management,
+          advanced technical execution, and an unwavering commitment to quality, safety, and client satisfaction.</p>
+        <p>We are committed to building long-term partnerships with clients, nurturing skilled manpower, adopting
+          industry-best practices, and continuously scaling our capacity to handle progressively larger and more complex
+          infrastructure mandates across India.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <span class="eyebrow">What We Deliver</span>
+    <h2 class="sec-title">Our Services</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-body">Agex Ventures operates across two high-impact verticals. Select a domain to explore our full
+      service capabilities.</p>
+    <div class="tab-buttons">
+      <button class="tab-btn active" id="btn-civil" onclick="switchTab('civil')">&#9874; Civil Construction</button>
+      <button class="tab-btn" id="btn-oilgas" onclick="switchTab('oilgas')">&#128722; Oil &amp; Gas Services</button>
+    </div>
+    <div id="civil" class="tab-panel active">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h4>Residential &amp; Commercial Construction</h4>
+        <p>End-to-end construction of residential complexes, commercial towers, housing projects, and mixed-use
+          developments. We handle design coordination, structural execution, finishing, and handover.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <h4>Road &amp; Infrastructure Development</h4>
+        <p>Construction and upgradation of highways, state roads, rural connectivity projects, flyovers, and allied
+          infrastructure meeting NHAI, PMGSY, and state PWD standards.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <h4>Industrial Projects</h4>
+        <p>Construction of factories, warehouses, processing units, and industrial parks for heavy-industry clients with
+          strict adherence to industrial safety norms and operational requirements.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <h4>RCC &amp; Structural Work</h4>
+        <p>Reinforced cement concrete structures, pre-engineered building systems, steel fabrication, and structural
+          retrofitting. Precision execution for greenfield and brownfield projects.</p>
+      </div>
+      <div class="svc-card svc-full">
+        <div class="svc-num">05</div>
+        <h4>Site Development &amp; Preparation</h4>
+        <p>Comprehensive site grading, leveling, excavation, retaining wall construction, and infrastructure
+          provisioning. We prepare sites to the highest technical standards so every project begins on solid ground.</p>
+      </div>
+    </div>
+    <div id="oilgas" class="tab-panel">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h4>Pipeline Installation &amp; Maintenance</h4>
+        <p>Design-to-commissioning pipeline services for crude oil, natural gas, and petrochemical transport. Certified
+          teams handle trench preparation, pipe laying, welding, hydro-testing, and long-term maintenance.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <h4>Oil Field Support Services</h4>
+        <p>Comprehensive support for upstream and midstream oil &amp; gas fields including civil works at well sites,
+          production facility construction, access road development, and camp infrastructure management.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <h4>Equipment Handling &amp; Logistics</h4>
+        <p>Specialized heavy equipment mobilization, rigging, and placement for oil &amp; gas installations. Critical
+          plant and machinery delivered safely, on schedule, and in full regulatory compliance.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <h4>Industrial Maintenance Services</h4>
+        <p>Scheduled and emergency maintenance of process equipment, pipelines, storage tanks, and mechanical systems at
+          refineries and production facilities&mdash;minimizing downtime and maximizing efficiency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="exp-grid">
+      <div>
+        <span class="eyebrow">Track Record</span>
+        <h2 class="sec-title">Experience &amp;<br>Expertise</h2>
+        <div class="gold-rule"></div>
+        <p class="sec-body">Agex Ventures has built a solid foundation through disciplined execution across civil and
+          industrial domains. Our team brings seasoned engineers, project managers, and field specialists with decades
+          of on-ground experience.</p>
+        <div class="milestones">
+          <div class="milestone fade-up">
+            <div class="milestone-dot">01</div>
+            <div>
+              <h4>Proven Civil Execution</h4>
+              <p>Delivered residential, commercial, and road projects in Rajasthan with consistent quality and schedule
+                adherence.</p>
+            </div>
+          </div>
+          <div class="milestone fade-up">
+            <div class="milestone-dot">02</div>
+            <div>
+              <h4>Oil &amp; Gas Field Operations</h4>
+              <p>Hands-on experience supporting pipeline projects and oilfield civil works across Rajasthan&rsquo;s
+                hydrocarbon belt.</p>
+            </div>
+          </div>
+          <div class="milestone fade-up">
+            <div class="milestone-dot">03</div>
+            <div>
+              <h4>Industrial &amp; Heavy Projects</h4>
+              <p>End-to-end delivery of industrial construction including factory complexes and heavy structural works.
+              </p>
+            </div>
+          </div>
+          <div class="milestone fade-up">
+            <div class="milestone-dot">04</div>
+            <div>
+              <h4>Multi-Sector Competence</h4>
+              <p>Unique cross-sector capability to serve integrated project requirements under one accountable partner.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-box fade-up">
+          <div class="metric-big">2<span class="metric-unit">+</span></div>
+          <div class="metric-lbl">Industry Sectors</div>
+          <div class="metric-desc">Civil Construction &amp; Oil and Gas Services</div>
+        </div>
+        <div class="metric-box fade-up">
+          <div class="metric-big">10<span class="metric-unit">+</span></div>
+          <div class="metric-lbl">Service Offerings</div>
+          <div class="metric-desc">Construction, pipelines, maintenance &amp; site works</div>
+        </div>
+        <div class="metric-box fade-up">
+          <div class="metric-big">360<span class="metric-unit">&#176;</span></div>
+          <div class="metric-lbl">Project Delivery</div>
+          <div class="metric-desc">Site preparation to commissioning and handover</div>
+        </div>
+        <div class="metric-box fade-up">
+          <div class="metric-big">0</div>
+          <div class="metric-lbl">Compromise on Safety</div>
+          <div class="metric-desc">HSE protocols embedded across all operations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="why">
+    <span class="eyebrow">Our Differentiators</span>
+    <h2 class="sec-title">Why Choose<br>Agex Ventures</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-body">The distinction lies not just in what we build&mdash;but in how we build, who we become for our
+      clients, and the standards we refuse to compromise.</p>
+    <div class="why-grid">
+      <div class="why-card fade-up"><span class="why-icon">&#127942;</span>
+        <h4>Integrated Expertise</h4>
+        <p>Rare dual-domain capability in Civil Construction and Oil &amp; Gas Services allows us to handle integrated,
+          cross-sector projects under a single accountable partner.</p>
+      </div>
+      <div class="why-card fade-up"><span class="why-icon">&#9200;</span>
+        <h4>On-Time Delivery Culture</h4>
+        <p>Built around milestone discipline. We invest in pre-project planning, real-time monitoring, and proactive
+          risk mitigation to ensure schedules are always honoured.</p>
+      </div>
+      <div class="why-card fade-up"><span class="why-icon">&#127937;</span>
+        <h4>Uncompromised Quality</h4>
+        <p>Rigorous quality control at every stage&mdash;from material procurement to final inspection. Structured QA/QC
+          processes on every project, meeting and exceeding national standards.</p>
+      </div>
+      <div class="why-card fade-up"><span class="why-icon">&#128274;</span>
+        <h4>Safety-First Operations</h4>
+        <p>HSE is non-negotiable. Teams trained in industry-standard safety protocols, with zero tolerance for unsafe
+          practices across all project sites.</p>
+      </div>
+      <div class="why-card fade-up"><span class="why-icon">&#128200;</span>
+        <h4>Scalable Capacity</h4>
+        <p>From small site development to multi-crore infrastructure projects, Agex Ventures scales its resources,
+          manpower, and machinery to match any demand.</p>
+      </div>
+      <div class="why-card fade-up"><span class="why-icon">&#129309;</span>
+        <h4>Client Partnership Mindset</h4>
+        <p>We take ownership, not just orders. Transparent in communication, proactive in problem-solving, committed to
+          creating lasting value for every client.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS STRIP -->
+  <div id="sectors">
+    <div class="sectors-inner">
+      <div class="sectors-title">Industries We Serve</div>
+      <div class="sectors-pills">
+        <span class="pill">Residential</span>
+        <span class="pill">Commercial</span>
+        <span class="pill">Roads &amp; Highways</span>
+        <span class="pill">Industrial</span>
+        <span class="pill">Oil &amp; Gas Upstream</span>
+        <span class="pill">Midstream Pipeline</span>
+        <span class="pill">Govt. Projects</span>
+        <span class="pill">EPC Contracts</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOALS -->
+  <section id="goals">
+    <span class="eyebrow">The Road Ahead</span>
+    <h2 class="sec-title">Future Goals</h2>
+    <div class="gold-rule"></div>
+    <div class="goals-grid">
+      <div class="goals-list">
+        <div class="goal-item fade-up">
+          <div class="goal-arrow">&rarr;</div>
+          <div>
+            <h4>Scale to &#8377;100 Crore+ Revenue</h4>
+            <p>Building the organizational capacity and financial systems to execute and manage multi-crore contracts
+              across civil and energy sectors.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-arrow">&rarr;</div>
+          <div>
+            <h4>Expand Pan-India Presence</h4>
+            <p>Strategically expanding from Rajasthan to Gujarat, Madhya Pradesh, Uttar Pradesh, and the NCR
+              infrastructure corridor.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-arrow">&rarr;</div>
+          <div>
+            <h4>Secure PSU &amp; Tier-1 EPC Contracts</h4>
+            <p>Building ISO credentials and financial standing to register as vendor for ONGC, IOCL, NHAI, CPWD, and
+              leading EPC majors.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-arrow">&rarr;</div>
+          <div>
+            <h4>Build Certified 500+ Workforce</h4>
+            <p>Investing in NSDC-aligned training to create a 500+ strong certified workforce across construction and
+              pipeline disciplines.</p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-arrow">&rarr;</div>
+          <div>
+            <h4>Technology &amp; Digital Integration</h4>
+            <p>Adopting ERP project tracking, BIM coordination, drone surveys, and digital HSE management to sharpen
+              execution efficiency.</p>
+          </div>
+        </div>
+      </div>
+      <div class="vision-box fade-up">
+        <blockquote>&ldquo;India is building at a pace the world has never seen. Agex Ventures intends to be at the
+          heart of that transformation&mdash;laying foundations, laying pipelines, and laying the groundwork for a
+          stronger nation.&rdquo;</blockquote>
+        <cite>&mdash; Agex Ventures, Corporate Vision Statement</cite>
+        <div class="milestones-table">
+          <div class="mrow"><span>ISO Certification</span><span>Target: FY 2025&ndash;26</span></div>
+          <div class="mrow"><span>PSU Vendor Registration</span><span>Active Pipeline</span></div>
+          <div class="mrow"><span>Pan-India Office Network</span><span>5 Locations by 2027</span></div>
+          <div class="mrow"><span>Revenue Milestone</span><span>&#8377;100 Cr+ by 2028</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <span class="eyebrow">Connect With Us</span>
+    <h2 class="sec-title">Get In Touch</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-body">Whether you need a civil contractor, an oil &amp; gas service partner, or a subcontractor for a
+      large infrastructure project&mdash;Agex Ventures is ready to engage.</p>
+    <div class="contact-grid">
+      <div class="contact-details">
+        <div class="contact-item fade-up">
+          <div class="c-icon">&#128205;</div>
+          <div>
+            <h4>Registered Office</h4>
+            <p>Jaipur, Rajasthan, India</p>
+          </div>
+        </div>
+        <div class="contact-item fade-up">
+          <div class="c-icon">&#128222;</div>
+          <div>
+            <h4>Phone / WhatsApp</h4>
+            <p>+91 91169 06355</p>
+          </div>
+        </div>
+        <div class="contact-item fade-up">
+          <div class="c-icon">&#127959;</div>
+          <div>
+            <h4>Civil Construction</h4>
+            <p>Residential, Commercial, Roads, Industrial &amp; Structural Works</p>
+          </div>
+        </div>
+        <div class="contact-item fade-up">
+          <div class="c-icon">&#128722;</div>
+          <div>
+            <h4>Oil &amp; Gas Services</h4>
+            <p>Pipeline Projects, Oilfield Support, Equipment &amp; Maintenance</p>
+          </div>
+        </div>
+        <div class="hours-box fade-up">
+          <div class="lbl">Business Hours</div>
+          <p>Monday &ndash; Saturday: 9:00 AM &ndash; 7:00 PM IST</p>
+          <p style="margin-top:6px;font-size:13px;color:var(--muted);">Emergency site contacts available 24/7 for active
+            projects</p>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <h3>Send an Enquiry</h3>
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name or Company Name">
+        </div>
+        <div class="form-group"><label>Phone / Email</label><input type="text"
+            placeholder="+91 XXXXX XXXXX or email@company.com"></div>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select>
+            <option value="">Select a Service</option>
+            <option>Residential &amp; Commercial Construction</option>
+            <option>Road &amp; Infrastructure Development</option>
+            <option>Industrial Projects</option>
+            <option>RCC &amp; Structural Work</option>
+            <option>Site Development</option>
+            <option>Pipeline Installation &amp; Maintenance</option>
+            <option>Oil Field Support Services</option>
+            <option>Equipment Handling</option>
+            <option>Industrial Maintenance</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Brief Requirement</label><textarea
+            placeholder="Describe your project scope, location, and timeline..."></textarea></div>
+        <button class="submit-btn" id="submitBtn" onclick="submitForm()">Submit Enquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <!-- <div class="footer-logo">AGEX<span>.</span>VENTURES</div> -->
+
+    <div class="footer-logo">
+      <img src="logo.png" alt="Agex Ventures" style="
+  height:36px;
+  background: #ffffff;
+  padding:5px 12px;
+  border-radius:6px;">
+    </div>
+
+    <div class="footer-copy">&copy; 2025 Agex Ventures. All Rights Reserved. | Jaipur, Rajasthan, India</div>
+    <div class="footer-sectors"><b>Civil Construction</b> &middot; <b>Oil &amp; Gas Services</b></div>
+  </footer>
+
+  <script>
+    // Tab switching
+    function switchTab(id) {
+      var panels = document.querySelectorAll('.tab-panel');
+      var buttons = document.querySelectorAll('.tab-btn');
+      for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('active'); }
+      for (var j = 0; j < buttons.length; j++) { buttons[j].classList.remove('active'); }
+      document.getElementById(id).classList.add('active');
+      document.getElementById('btn-' + id).classList.add('active');
+    }
+
+    // Mobile hamburger
+    document.getElementById('hamburger').addEventListener('click', function () {
+      var links = document.getElementById('navLinks');
+      links.classList.contains('open') ? links.classList.remove('open') : links.classList.add('open');
+    });
+
+    // Close nav on link click
+    var navAs = document.querySelectorAll('.nav-links a');
+    for (var k = 0; k < navAs.length; k++) {
+      navAs[k].addEventListener('click', function () {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    }
+
+    // Scroll fade-in
+    function checkFade() {
+      var els = document.querySelectorAll('.fade-up');
+      for (var i = 0; i < els.length; i++) {
+        var rect = els[i].getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          els[i].classList.add('visible');
+        }
+      }
+    }
+    window.addEventListener('scroll', checkFade);
+    window.addEventListener('load', checkFade);
+    checkFade();
+
+    // Form submit
+    function submitForm() {
+      var btn = document.getElementById('submitBtn');
+      btn.textContent = 'Enquiry Sent! We Will Contact You Shortly.';
+      btn.style.background = '#1B3A6B';
+      btn.style.color = '#F5F0E8';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+
+</html>
